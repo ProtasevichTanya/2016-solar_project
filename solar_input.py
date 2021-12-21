@@ -84,7 +84,7 @@ def parse_planet_parameters(line, planet):
     planet.type = 'planet'
 
 
-def write_space_objects_data_to_file(output_filename, space_objects, time):
+def write_space_objects_data_to_file(output_filename, space_objects):
     """Сохраняет данные о космических объектах в файл.
     Предоставляет статистику.
     Строки должны иметь следующий формат:
@@ -100,8 +100,7 @@ def write_space_objects_data_to_file(output_filename, space_objects, time):
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
             if obj.type == "planet":
-                print(f"{count} {time} {obj.type} {obj.x} {obj.y} {obj.vx} {obj.vy}", file=out_file)
-                line = str(count) + " " + str(obj.get_distance_massive()) + " " + str(obj.get_v_massive()) + "\n"
+                line = str(count) + " " + str(obj.type) + " " + str(obj.R) + " " + str(obj.color) + " " + str(obj.m) + " " + str(obj.x) + " " + str(obj.y) + " " + str(obj.Vx) + " " + str(obj.Vy) + "\n"
                 out_file.write(line)
             count += 1
 
